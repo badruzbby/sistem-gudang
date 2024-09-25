@@ -2,6 +2,7 @@
 # Sistem Gudang
 
 Sistem Gudang adalah aplikasi berbasis web yang dibangun menggunakan Laravel 11. Aplikasi ini memungkinkan pengguna untuk mengelola stok barang di gudang, mencatat mutasi barang, serta menelusuri history mutasi berdasarkan barang maupun user. Selain itu, aplikasi ini dilengkapi dengan sistem autentikasi berbasis token (Bearer Token) dan dokumentasi API yang dibuat menggunakan Postman.
+aplikasi ini dibuat guna memenuhi tugas 
 
 ## Fitur Utama
 
