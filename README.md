@@ -98,7 +98,13 @@ git clone https://github.com/badruzbby/sistem-gudang.git
 cd sistem-gudang
 ```
 
-### 2. Install Dependencies dengan Laravel Sail
+### 2. konfigurasi environment dan Install Dependencies dengan Laravel Sail
+
+Salin file `.env.example` ke `.env` dan sesuaikan konfigurasi database dengan setup lokal anda.
+
+```bash
+cp .env.example .env
+```
 
 Jalankan perintah berikut untuk menginstal dependencies dengan Laravel Sail.
 
