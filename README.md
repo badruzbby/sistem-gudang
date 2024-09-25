@@ -148,7 +148,7 @@ Berikut adalah daftar endpoint yang tersedia:
 
 Dokumentasi lengkap endpoint API dibuat menggunakan Postman. Anda dapat mengaksesnya melalui link berikut:
 
-[Postman API Documentation](https://postman.com/your-doc-link)
+[Postman API Documentation](https://documenter.getpostman.com/view/38547766/2sAXqwYzXi)
 
 ## License
 
