@@ -32,7 +32,32 @@ git clone https://github.com/username/sistem-gudang.git
 cd sistem-gudang
 ```
 
-### 2. Install Dependencies dengan Laravel Sail
+### 2. Deployment dengan Docker
+
+Anda bisa menjalankan aplikasi di server menggunakan Docker. Berikut adalah langkah-langkahnya:
+
+#### 1. Build Docker Image
+Jalankan perintah berikut untuk membuild Docker image:
+
+```bash
+docker-compose build
+```
+
+#### 2. Menjalankan Aplikasi
+Jalankan aplikasi dengan perintah:
+
+```bash
+docker-compose up -d
+```
+
+#### 3. Migrasikan Database
+Setelah container berjalan, migrasikan database dengan perintah berikut:
+
+```bash
+docker-compose exec app php artisan migrate --force
+```
+
+### 3. Install Dependencies dengan Laravel Sail
 
 Jalankan perintah berikut untuk menginstal dependencies dengan Laravel Sail.
 
@@ -53,7 +78,7 @@ Kemudian, jalankan Sail dengan perintah berikut:
 ./vendor/bin/sail up -d
 ```
 
-### 3. Konfigurasi Environment
+### 4. Konfigurasi Environment
 
 Salin file `.env.example` ke `.env` dan sesuaikan konfigurasi database dengan setup lokal Sail Anda.
 
