@@ -36,7 +36,7 @@ MySql >= 5.2,
 Clone repository ini ke local development environment Anda.
 
 ```bash
-git clone https://github.com/username/sistem-gudang.git
+git clone https://github.com/badruzbby/sistem-gudang.git
 cd sistem-gudang
 ```
 
@@ -94,7 +94,7 @@ Aplikasi akan berjalan di `http://localhost:8000`.
 Clone repository ini ke local development environment Anda.
 
 ```bash
-git clone https://github.com/username/sistem-gudang.git
+git clone https://github.com/badruzbby/sistem-gudang.git
 cd sistem-gudang
 ```
 
