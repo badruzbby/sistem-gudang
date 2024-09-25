@@ -23,6 +23,72 @@ aplikasi ini dibuat guna memenuhi tugas
 
 ## Instalasi
 
+## instalasi lokal
+
+#### Requirements
+
+PHP >= 8.2
+Composer >= 2.7.9
+MySql >= 5.2
+
+#### 1. Clone Repository ini
+
+Clone repository ini ke local development environment Anda.
+
+```bash
+git clone https://github.com/username/sistem-gudang.git
+cd sistem-gudang
+```
+
+#### 2. Install Dependencies dengan Composer
+
+Jalankan perintah berikut untuk menginstal dependencies dengan Composer
+
+```bash
+composer update
+```
+
+#### 3. Konfigurasi Environment
+
+Salin file `.env.example` ke `.env` dan sesuaikan konfigurasi database dengan setup lokal anda.
+
+```bash
+cp .env.example .env
+```
+
+Setelah itu, generate application key:
+
+```bash
+php artisan key:generate
+```
+
+### 4. Setup Database
+
+Migrasikan database dengan menjalankan perintah berikut:
+
+```bash
+php artisan migrate
+```
+
+Jika Anda ingin memiliki beberapa data awal, Anda bisa menjalankan seeder:
+
+```bash
+php artisan db:seed
+```
+
+### 5. Menjalankan Server
+
+Untuk menjalankan aplikasi, gunakan perintah berikut:
+
+```bash
+php artisan serve
+```
+
+Aplikasi akan berjalan di `http://localhost:8000`.
+
+
+## Instalasi menggunakan Laravel sail
+
 ### 1. Clone Repository
 
 Clone repository ini ke local development environment Anda.
