@@ -27,9 +27,9 @@ aplikasi ini dibuat guna memenuhi tugas
 
 #### Requirements
 
-PHP >= 8.2
-Composer >= 2.7.9
-MySql >= 5.2
+PHP >= 8.2,
+Composer >= 2.7.9,
+MySql >= 5.2,
 
 #### 1. Clone Repository ini
 
