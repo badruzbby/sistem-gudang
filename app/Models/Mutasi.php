@@ -12,6 +12,8 @@ class Mutasi extends Model
         'jumlah',
         'tanggal',
         'jenis_mutasi',
+        'user_id',
+        'barang_id',
     ];
 
     public function barang()

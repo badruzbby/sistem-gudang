@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mutasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Gate;
+
 class MutasiController extends Controller
 {
     /**
@@ -33,9 +33,11 @@ class MutasiController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nama' => 'required|string|max:255',
-            'harga' => 'required|numeric',
-            'stok' => 'required|integer',
+            'barang_id' => 'required|integer',
+            'user_id' => 'required|integer',
+            'jumlah' => 'required|integer',
+            'tanggal' => 'required|date',
+            'jenis_mutasi' => 'required|string',
         ]);
 
         if ($validator->fails()) {
@@ -80,9 +82,11 @@ class MutasiController extends Controller
     public function update(Request $request, Mutasi $mutasi)
     {
         $validate = Validator::make($request->all(), [
-            'nama' => 'required|string|max:255',
-            'harga' => 'required|numeric',
-            'stok' => 'required|integer',
+            'barang_id' => 'required|integer',
+            'user_id' => 'required|integer',
+            'jumlah' => 'required|integer',
+            'tanggal' => 'required|date',
+            'jenis_mutasi' => 'required|string',
         ]);
 
         if ($validate->fails()) {
@@ -107,12 +111,28 @@ class MutasiController extends Controller
      */
     public function destroy(Mutasi $mutasi)
     {
-        Gate::authorize('modify', $mutasi);
         $mutasi->delete();
-
         return response()->json([
             'success' => true,
             'message' => 'Data berhasil dihapus',
+            'data' => $mutasi
+        ]);
+    }
+
+    public function historyByBarang($id)
+    {
+        $mutasi = Mutasi::where('barang_id', $id)->get();
+        return response()->json([
+            'success' => true,
+            'data' => $mutasi
+        ]);
+    }
+
+    public function historyByUser($id)
+    {
+        $mutasi = Mutasi::where('user_id', $id)->get();
+        return response()->json([
+            'success' => true,
             'data' => $mutasi
         ]);
     }

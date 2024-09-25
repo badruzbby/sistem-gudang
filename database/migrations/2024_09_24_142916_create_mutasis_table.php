@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('mutasis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('barang_id')->constrained('barangs');
+            $table->foreignId('barang_id')->constrained()->onDelete('cascade');
             $table->integer('jumlah');
             $table->date('tanggal');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('jenis_mutasi');
             $table->timestamps();
         });

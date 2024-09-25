@@ -12,11 +12,10 @@ class Barang extends Model
         'nama_barang',
         'harga',
         'stok',
-        'keterangan',
+        'deskripsi',
         'kode',
         'kategori',
         'lokasi',
-        'gambar',
     ];
 
     public function mutasi()
