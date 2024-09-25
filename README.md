@@ -21,7 +21,7 @@ aplikasi ini dibuat guna memenuhi tugas
 - **Docker (Laravel Sail)**: Untuk development dan deployment aplikasi.
 - **Postman**: Untuk dokumentasi API.
 
-## Instalasi
+# Instalasi
 
 ## instalasi lokal
 
