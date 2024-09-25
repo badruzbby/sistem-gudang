@@ -32,7 +32,66 @@ git clone https://github.com/username/sistem-gudang.git
 cd sistem-gudang
 ```
 
-### 2. Deployment dengan Docker
+### 2. Install Dependencies dengan Laravel Sail
+
+Jalankan perintah berikut untuk menginstal dependencies dengan Laravel Sail.
+
+```bash
+./vendor/bin/sail up
+```
+
+Jika Sail belum diinstal, Anda bisa menginstallnya dengan menjalankan perintah ini:
+
+```bash
+composer require laravel/sail --dev
+php artisan sail:install
+```
+
+Kemudian, jalankan Sail dengan perintah berikut:
+
+```bash
+./vendor/bin/sail up -d
+```
+
+### 3. Konfigurasi Environment
+
+Salin file `.env.example` ke `.env` dan sesuaikan konfigurasi database dengan setup lokal Sail Anda.
+
+```bash
+cp .env.example .env
+```
+
+Setelah itu, generate application key:
+
+```bash
+./vendor/bin/sail artisan key:generate
+```
+
+### 4. Setup Database
+
+Migrasikan database dengan menjalankan perintah berikut:
+
+```bash
+./vendor/bin/sail artisan migrate
+```
+
+Jika Anda ingin memiliki beberapa data awal, Anda bisa menjalankan seeder:
+
+```bash
+./vendor/bin/sail artisan db:seed
+```
+
+### 5. Menjalankan Server
+
+Untuk menjalankan aplikasi, gunakan perintah berikut:
+
+```bash
+./vendor/bin/sail up
+```
+
+Aplikasi akan berjalan di `http://localhost`.
+
+### 6. Deployment dengan Docker
 
 Anda bisa menjalankan aplikasi di server menggunakan Docker. Berikut adalah langkah-langkahnya:
 
@@ -56,65 +115,6 @@ Setelah container berjalan, migrasikan database dengan perintah berikut:
 ```bash
 docker-compose exec app php artisan migrate --force
 ```
-
-### 3. Install Dependencies dengan Laravel Sail
-
-Jalankan perintah berikut untuk menginstal dependencies dengan Laravel Sail.
-
-```bash
-./vendor/bin/sail up
-```
-
-Jika Sail belum diinstal, Anda bisa menginstallnya dengan menjalankan perintah ini:
-
-```bash
-composer require laravel/sail --dev
-php artisan sail:install
-```
-
-Kemudian, jalankan Sail dengan perintah berikut:
-
-```bash
-./vendor/bin/sail up -d
-```
-
-### 4. Konfigurasi Environment
-
-Salin file `.env.example` ke `.env` dan sesuaikan konfigurasi database dengan setup lokal Sail Anda.
-
-```bash
-cp .env.example .env
-```
-
-Setelah itu, generate application key:
-
-```bash
-./vendor/bin/sail artisan key:generate
-```
-
-### 5. Setup Database
-
-Migrasikan database dengan menjalankan perintah berikut:
-
-```bash
-./vendor/bin/sail artisan migrate
-```
-
-Jika Anda ingin memiliki beberapa data awal, Anda bisa menjalankan seeder:
-
-```bash
-./vendor/bin/sail artisan db:seed
-```
-
-### 6. Menjalankan Server
-
-Untuk menjalankan aplikasi, gunakan perintah berikut:
-
-```bash
-./vendor/bin/sail up
-```
-
-Aplikasi akan berjalan di `http://localhost`.
 
 ## REST API
 
