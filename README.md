@@ -125,21 +125,13 @@ Kemudian, jalankan Sail dengan perintah berikut:
 ./vendor/bin/sail up -d
 ```
 
-### 3. Konfigurasi Environment
-
-Salin file `.env.example` ke `.env` dan sesuaikan konfigurasi database dengan setup lokal Sail Anda.
-
-```bash
-cp .env.example .env
-```
-
 Setelah itu, generate application key:
 
 ```bash
 ./vendor/bin/sail artisan key:generate
 ```
 
-### 4. Setup Database
+### 3. Setup Database
 
 Migrasikan database dengan menjalankan perintah berikut:
 
@@ -153,7 +145,7 @@ Jika Anda ingin memiliki beberapa data awal, Anda bisa menjalankan seeder:
 ./vendor/bin/sail artisan db:seed
 ```
 
-### 5. Menjalankan Server
+### 4. Menjalankan Server
 
 Untuk menjalankan aplikasi, gunakan perintah berikut:
 
@@ -163,7 +155,7 @@ Untuk menjalankan aplikasi, gunakan perintah berikut:
 
 Aplikasi akan berjalan di `http://localhost`.
 
-### 6. Deployment dengan Docker
+### 5. Deployment dengan Docker
 
 Anda bisa menjalankan aplikasi di server menggunakan Docker. Berikut adalah langkah-langkahnya:
 
