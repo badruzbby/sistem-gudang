@@ -10,7 +10,7 @@ Sistem Gudang adalah aplikasi berbasis web yang dibangun menggunakan Laravel 11.
 - **Manajemen Mutasi Barang**: Pencatatan barang masuk dan keluar.
 - **History Mutasi**: Tampilkan riwayat mutasi berdasarkan barang atau user.
 - **Autentikasi**: Menggunakan Laravel Passport untuk autentikasi berbasis token.
-- **Docker**: Aplikasi dapat dideploy menggunakan Docker.
+- **Docker**: Aplikasi dapat dideploy menggunakan Docker dengan Laravel Sail.
 - **API Documentation**: Dokumentasi REST API menggunakan Postman.
 
 ## Teknologi yang Digunakan
@@ -18,7 +18,7 @@ Sistem Gudang adalah aplikasi berbasis web yang dibangun menggunakan Laravel 11.
 - **Laravel 11**: Framework utama.
 - **Laravel Passport**: Untuk autentikasi dengan Bearer Token.
 - **MySQL**: Database yang digunakan.
-- **Docker**: Untuk deployment aplikasi.
+- **Docker (Laravel Sail)**: Untuk development dan deployment aplikasi.
 - **Postman**: Untuk dokumentasi API.
 
 ## Instalasi
@@ -32,17 +32,30 @@ git clone https://github.com/username/sistem-gudang.git
 cd sistem-gudang
 ```
 
-### 2. Install Dependencies
+### 2. Install Dependencies dengan Laravel Sail
 
-Jalankan perintah di bawah ini untuk menginstal semua dependensi yang diperlukan.
+Jalankan perintah berikut untuk menginstal dependencies dengan Laravel Sail.
 
 ```bash
-composer install
+./vendor/bin/sail up
+```
+
+Jika Sail belum diinstal, Anda bisa menginstallnya dengan menjalankan perintah ini:
+
+```bash
+composer require laravel/sail --dev
+php artisan sail:install
+```
+
+Kemudian, jalankan Sail dengan perintah berikut:
+
+```bash
+./vendor/bin/sail up -d
 ```
 
 ### 3. Konfigurasi Environment
 
-Salin file `.env.example` ke `.env` dan sesuaikan konfigurasi database sesuai dengan setup lokal Anda.
+Salin file `.env.example` ke `.env` dan sesuaikan konfigurasi database dengan setup lokal Sail Anda.
 
 ```bash
 cp .env.example .env
@@ -51,7 +64,7 @@ cp .env.example .env
 Setelah itu, generate application key:
 
 ```bash
-php artisan key:generate
+./vendor/bin/sail artisan key:generate
 ```
 
 ### 4. Setup Database
@@ -59,13 +72,13 @@ php artisan key:generate
 Migrasikan database dengan menjalankan perintah berikut:
 
 ```bash
-php artisan migrate
+./vendor/bin/sail artisan migrate
 ```
 
 Jika Anda ingin memiliki beberapa data awal, Anda bisa menjalankan seeder:
 
 ```bash
-php artisan db:seed
+./vendor/bin/sail artisan db:seed
 ```
 
 ### 5. Install Laravel Passport
@@ -73,34 +86,18 @@ php artisan db:seed
 Laravel Passport diperlukan untuk autentikasi berbasis token. Install Passport dengan menjalankan perintah berikut:
 
 ```bash
-php artisan passport:install
+./vendor/bin/sail artisan passport:install
 ```
 
 ### 6. Menjalankan Server
 
-Untuk menjalankan aplikasi secara lokal, gunakan perintah berikut:
+Untuk menjalankan aplikasi, gunakan perintah berikut:
 
 ```bash
-php artisan serve
+./vendor/bin/sail up
 ```
 
-Aplikasi akan berjalan di `http://localhost:8000`.
-
-## Docker
-
-Aplikasi ini juga dapat dijalankan menggunakan Docker. Untuk membangun dan menjalankan container, gunakan perintah berikut:
-
-1. **Build Docker Image**:
-   ```bash
-   docker build -t sistem-gudang .
-   ```
-
-2. **Run Docker Container**:
-   ```bash
-   docker run -p 9000:9000 sistem-gudang
-   ```
-
-Aplikasi sekarang berjalan di `http://localhost:9000`.
+Aplikasi akan berjalan di `http://localhost`.
 
 ## REST API
 
@@ -127,28 +124,24 @@ Berikut adalah daftar endpoint yang tersedia:
 #### 1. User
 
 - `POST /api/login`: Login dan mendapatkan token.
-- `POST /api/users`: Menambahkan user baru.
-- `GET /api/users`: Menampilkan daftar user.
-- `GET /api/users/{id}`: Menampilkan detail user.
-- `PUT /api/users/{id}`: Mengupdate data user.
-- `DELETE /api/users/{id}`: Menghapus user.
+- `POST /api/register`: Menambahkan user baru.
 
 #### 2. Barang
 
-- `POST /api/barangs`: Menambahkan barang baru.
-- `GET /api/barangs`: Menampilkan daftar barang.
-- `GET /api/barangs/{id}`: Menampilkan detail barang.
-- `PUT /api/barangs/{id}`: Mengupdate data barang.
-- `DELETE /api/barangs/{id}`: Menghapus barang.
+- `POST /api/barang`: Menambahkan barang baru.
+- `GET /api/barang`: Menampilkan daftar barang.
+- `GET /api/barang/{id}`: Menampilkan detail barang.
+- `PUT /api/barang/{id}`: Mengupdate data barang.
+- `DELETE /api/barang/{id}`: Menghapus barang.
 - `GET /api/barang/{id}/history`: Menampilkan history mutasi barang.
 
 #### 3. Mutasi
 
-- `POST /api/mutasis`: Menambahkan mutasi baru.
-- `GET /api/mutasis`: Menampilkan daftar mutasi.
-- `GET /api/mutasis/{id}`: Menampilkan detail mutasi.
-- `PUT /api/mutasis/{id}`: Mengupdate data mutasi.
-- `DELETE /api/mutasis/{id}`: Menghapus mutasi.
+- `POST /api/mutasi`: Menambahkan mutasi baru.
+- `GET /api/mutasi`: Menampilkan daftar mutasi.
+- `GET /api/mutasi/{id}`: Menampilkan detail mutasi.
+- `PUT /api/mutasi/{id}`: Mengupdate data mutasi.
+- `DELETE /api/mutasi/{id}`: Menghapus mutasi.
 - `GET /api/user/{id}/history`: Menampilkan history mutasi user.
 
 ## Dokumentasi API
