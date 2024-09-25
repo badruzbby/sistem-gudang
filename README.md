@@ -80,15 +80,7 @@ Jika Anda ingin memiliki beberapa data awal, Anda bisa menjalankan seeder:
 ./vendor/bin/sail artisan db:seed
 ```
 
-### 5. Install Laravel Passport
-
-Laravel Passport diperlukan untuk autentikasi berbasis token. Install Passport dengan menjalankan perintah berikut:
-
-```bash
-./vendor/bin/sail artisan passport:install
-```
-
-### 6. Menjalankan Server
+### 5. Menjalankan Server
 
 Untuk menjalankan aplikasi, gunakan perintah berikut:
 
