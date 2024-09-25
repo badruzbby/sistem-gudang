@@ -1,67 +1,162 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Sistem Gudang
 
-## Sistem Gudang
+Sistem Gudang adalah aplikasi berbasis web yang dibangun menggunakan Laravel 11. Aplikasi ini memungkinkan pengguna untuk mengelola stok barang di gudang, mencatat mutasi barang, serta menelusuri history mutasi berdasarkan barang maupun user. Selain itu, aplikasi ini dilengkapi dengan sistem autentikasi berbasis token (Bearer Token) dan dokumentasi API yang dibuat menggunakan Postman.
 
-Aplikasi ini dibuat guna untuk memenuhi tes
+## Fitur Utama
 
-## Cara Install
+- **Manajemen Pengguna**: CRUD pengguna dengan autentikasi.
+- **Manajemen Barang**: CRUD barang dengan kategori, supplier, dan stok.
+- **Manajemen Mutasi Barang**: Pencatatan barang masuk dan keluar.
+- **History Mutasi**: Tampilkan riwayat mutasi berdasarkan barang atau user.
+- **Autentikasi**: Menggunakan Laravel Passport untuk autentikasi berbasis token.
+- **Docker**: Aplikasi dapat dideploy menggunakan Docker.
+- **API Documentation**: Dokumentasi REST API menggunakan Postman.
 
-Tanpa docker
+## Teknologi yang Digunakan
 
-1. Clone repository `git clone https://github.com/badruzbby/sistem-gudang.git`
-2. Jalankan perintah `composer install`
-3. Jalankan perintah `php artisan migrate`
-4. Jalankan perintah `php artisan db:seed`
-5. Jalankan perintah `php artisan serve`
+- **Laravel 11**: Framework utama.
+- **Laravel Passport**: Untuk autentikasi dengan Bearer Token.
+- **MySQL**: Database yang digunakan.
+- **Docker**: Untuk deployment aplikasi.
+- **Postman**: Untuk dokumentasi API.
 
-menggunakan docker
+## Instalasi
 
-1. Clone repository `git clone https://github.com/badruzbby/sistem-gudang.git`
-2. Jalankan perintah `./vendor/bin/sail up -d`
-3. Jalankan perintah `docker-compose exec app composer install`
-4. Jalankan perintah `docker-compose exec app php artisan migrate`
-5. Jalankan perintah `docker-compose exec app php artisan db:seed`
-6. Jalankan perintah `docker-compose exec app php artisan serve`
+### 1. Clone Repository
 
-## Laravel Sponsors
+Clone repository ini ke local development environment Anda.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```bash
+git clone https://github.com/username/sistem-gudang.git
+cd sistem-gudang
+```
 
-### Premium Partners
+### 2. Install Dependencies
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Jalankan perintah di bawah ini untuk menginstal semua dependensi yang diperlukan.
 
-## Contributing
+```bash
+composer install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 3. Konfigurasi Environment
 
-## Code of Conduct
+Salin file `.env.example` ke `.env` dan sesuaikan konfigurasi database sesuai dengan setup lokal Anda.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+cp .env.example .env
+```
 
-## Security Vulnerabilities
+Setelah itu, generate application key:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+php artisan key:generate
+```
+
+### 4. Setup Database
+
+Migrasikan database dengan menjalankan perintah berikut:
+
+```bash
+php artisan migrate
+```
+
+Jika Anda ingin memiliki beberapa data awal, Anda bisa menjalankan seeder:
+
+```bash
+php artisan db:seed
+```
+
+### 5. Install Laravel Passport
+
+Laravel Passport diperlukan untuk autentikasi berbasis token. Install Passport dengan menjalankan perintah berikut:
+
+```bash
+php artisan passport:install
+```
+
+### 6. Menjalankan Server
+
+Untuk menjalankan aplikasi secara lokal, gunakan perintah berikut:
+
+```bash
+php artisan serve
+```
+
+Aplikasi akan berjalan di `http://localhost:8000`.
+
+## Docker
+
+Aplikasi ini juga dapat dijalankan menggunakan Docker. Untuk membangun dan menjalankan container, gunakan perintah berikut:
+
+1. **Build Docker Image**:
+   ```bash
+   docker build -t sistem-gudang .
+   ```
+
+2. **Run Docker Container**:
+   ```bash
+   docker run -p 9000:9000 sistem-gudang
+   ```
+
+Aplikasi sekarang berjalan di `http://localhost:9000`.
+
+## REST API
+
+### Autentikasi
+Aplikasi menggunakan **Bearer Token** untuk autentikasi. Untuk mendapatkan token, Anda harus login terlebih dahulu dengan mengirimkan request POST ke endpoint `/api/login` dengan parameter:
+
+```json
+{
+    "email": "user@example.com",
+    "password": "password"
+}
+```
+
+Jika berhasil, response akan mengembalikan token yang harus disertakan dalam setiap request dengan format:
+
+```
+Authorization: Bearer {token}
+```
+
+### Daftar Endpoint
+
+Berikut adalah daftar endpoint yang tersedia:
+
+#### 1. User
+
+- `POST /api/login`: Login dan mendapatkan token.
+- `POST /api/users`: Menambahkan user baru.
+- `GET /api/users`: Menampilkan daftar user.
+- `GET /api/users/{id}`: Menampilkan detail user.
+- `PUT /api/users/{id}`: Mengupdate data user.
+- `DELETE /api/users/{id}`: Menghapus user.
+
+#### 2. Barang
+
+- `POST /api/barangs`: Menambahkan barang baru.
+- `GET /api/barangs`: Menampilkan daftar barang.
+- `GET /api/barangs/{id}`: Menampilkan detail barang.
+- `PUT /api/barangs/{id}`: Mengupdate data barang.
+- `DELETE /api/barangs/{id}`: Menghapus barang.
+- `GET /api/barang/{id}/history`: Menampilkan history mutasi barang.
+
+#### 3. Mutasi
+
+- `POST /api/mutasis`: Menambahkan mutasi baru.
+- `GET /api/mutasis`: Menampilkan daftar mutasi.
+- `GET /api/mutasis/{id}`: Menampilkan detail mutasi.
+- `PUT /api/mutasis/{id}`: Mengupdate data mutasi.
+- `DELETE /api/mutasis/{id}`: Menghapus mutasi.
+- `GET /api/user/{id}/history`: Menampilkan history mutasi user.
+
+## Dokumentasi API
+
+Dokumentasi lengkap endpoint API dibuat menggunakan Postman. Anda dapat mengaksesnya melalui link berikut:
+
+[Postman API Documentation](https://postman.com/your-doc-link)
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Aplikasi ini menggunakan lisensi [MIT License](https://opensource.org/licenses/MIT).
