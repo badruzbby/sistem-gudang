@@ -5,7 +5,6 @@ Sistem Gudang adalah aplikasi berbasis web yang dibangun menggunakan Laravel 11.
 
 ## Fitur Utama
 
-- **Manajemen Pengguna**: CRUD pengguna dengan autentikasi.
 - **Manajemen Barang**: CRUD barang dengan kategori, supplier, dan stok.
 - **Manajemen Mutasi Barang**: Pencatatan barang masuk dan keluar.
 - **History Mutasi**: Tampilkan riwayat mutasi berdasarkan barang atau user.
